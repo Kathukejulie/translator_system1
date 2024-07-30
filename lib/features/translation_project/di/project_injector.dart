@@ -48,6 +48,9 @@ class ProjectControllerInjector {
     getit.registerLazySingleton<GetAllTranslationProjectsUseCase>(
       () => GetAllTranslationProjectsUseCase(getit()),
     );
+    getit.registerLazySingleton<StreamAllTranslationProjectsUseCase>(
+      () => StreamAllTranslationProjectsUseCase(getit()),
+    );
     getit.registerLazySingleton<GetProjectByIdUseCase>(
       () => GetProjectByIdUseCase(getit()),
     );
@@ -65,6 +68,8 @@ class ProjectControllerInjector {
             getit<CreateTranslationProjectUseCase>(),
         getAllTranslationProjectUseCase:
             getit<GetAllTranslationProjectsUseCase>(),
+        streamAllTranslationProjectUseCase:
+            getit<StreamAllTranslationProjectsUseCase>(),
         getByIdTranslationProjectUseCase: getit<GetProjectByIdUseCase>(),
         updateTranslationProjectUseCase:
             getit<UpdateTranslationProjectUseCase>(),

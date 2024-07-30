@@ -39,13 +39,10 @@ mixin _$TranslationProjectDataEntity {
   String get writerName => throw _privateConstructorUsedError;
   String get projectManagerName => throw _privateConstructorUsedError;
   List<String> get fileUrls => throw _privateConstructorUsedError;
+  List<String> get finalFileUrls => throw _privateConstructorUsedError;
 
-  /// Serializes this TranslationProjectDataEntity to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TranslationProjectDataEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TranslationProjectDataEntityCopyWith<TranslationProjectDataEntity>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -76,7 +73,8 @@ abstract class $TranslationProjectDataEntityCopyWith<$Res> {
       bool isComplete,
       String writerName,
       String projectManagerName,
-      List<String> fileUrls});
+      List<String> fileUrls,
+      List<String> finalFileUrls});
 }
 
 /// @nodoc
@@ -90,8 +88,6 @@ class _$TranslationProjectDataEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TranslationProjectDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -113,6 +109,7 @@ class _$TranslationProjectDataEntityCopyWithImpl<$Res,
     Object? writerName = null,
     Object? projectManagerName = null,
     Object? fileUrls = null,
+    Object? finalFileUrls = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -187,6 +184,10 @@ class _$TranslationProjectDataEntityCopyWithImpl<$Res,
           ? _value.fileUrls
           : fileUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      finalFileUrls: null == finalFileUrls
+          ? _value.finalFileUrls
+          : finalFileUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -218,7 +219,8 @@ abstract class _$$TranslationProjectDataEntityImplCopyWith<$Res>
       bool isComplete,
       String writerName,
       String projectManagerName,
-      List<String> fileUrls});
+      List<String> fileUrls,
+      List<String> finalFileUrls});
 }
 
 /// @nodoc
@@ -231,8 +233,6 @@ class __$$TranslationProjectDataEntityImplCopyWithImpl<$Res>
       $Res Function(_$TranslationProjectDataEntityImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TranslationProjectDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -254,6 +254,7 @@ class __$$TranslationProjectDataEntityImplCopyWithImpl<$Res>
     Object? writerName = null,
     Object? projectManagerName = null,
     Object? fileUrls = null,
+    Object? finalFileUrls = null,
   }) {
     return _then(_$TranslationProjectDataEntityImpl(
       id: null == id
@@ -328,6 +329,10 @@ class __$$TranslationProjectDataEntityImplCopyWithImpl<$Res>
           ? _value._fileUrls
           : fileUrls // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      finalFileUrls: null == finalFileUrls
+          ? _value._finalFileUrls
+          : finalFileUrls // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -354,8 +359,10 @@ class _$TranslationProjectDataEntityImpl
       required this.isComplete,
       required this.writerName,
       required this.projectManagerName,
-      required final List<String> fileUrls})
-      : _fileUrls = fileUrls;
+      required final List<String> fileUrls,
+      required final List<String> finalFileUrls})
+      : _fileUrls = fileUrls,
+        _finalFileUrls = finalFileUrls;
 
   factory _$TranslationProjectDataEntityImpl.fromJson(
           Map<String, dynamic> json) =>
@@ -403,9 +410,17 @@ class _$TranslationProjectDataEntityImpl
     return EqualUnmodifiableListView(_fileUrls);
   }
 
+  final List<String> _finalFileUrls;
+  @override
+  List<String> get finalFileUrls {
+    if (_finalFileUrls is EqualUnmodifiableListView) return _finalFileUrls;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_finalFileUrls);
+  }
+
   @override
   String toString() {
-    return 'TranslationProjectDataEntity(id: $id, postedBy: $postedBy, doneBy: $doneBy, price: $price, title: $title, deadline: $deadline, dateCreated: $dateCreated, task: $task, subject: $subject, words: $words, currentLanguage: $currentLanguage, finalLanguage: $finalLanguage, description: $description, service: $service, isComplete: $isComplete, writerName: $writerName, projectManagerName: $projectManagerName, fileUrls: $fileUrls)';
+    return 'TranslationProjectDataEntity(id: $id, postedBy: $postedBy, doneBy: $doneBy, price: $price, title: $title, deadline: $deadline, dateCreated: $dateCreated, task: $task, subject: $subject, words: $words, currentLanguage: $currentLanguage, finalLanguage: $finalLanguage, description: $description, service: $service, isComplete: $isComplete, writerName: $writerName, projectManagerName: $projectManagerName, fileUrls: $fileUrls, finalFileUrls: $finalFileUrls)';
   }
 
   @override
@@ -439,35 +454,37 @@ class _$TranslationProjectDataEntityImpl
                 other.writerName == writerName) &&
             (identical(other.projectManagerName, projectManagerName) ||
                 other.projectManagerName == projectManagerName) &&
-            const DeepCollectionEquality().equals(other._fileUrls, _fileUrls));
+            const DeepCollectionEquality().equals(other._fileUrls, _fileUrls) &&
+            const DeepCollectionEquality()
+                .equals(other._finalFileUrls, _finalFileUrls));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      postedBy,
-      doneBy,
-      price,
-      title,
-      deadline,
-      dateCreated,
-      task,
-      subject,
-      words,
-      currentLanguage,
-      finalLanguage,
-      description,
-      service,
-      isComplete,
-      writerName,
-      projectManagerName,
-      const DeepCollectionEquality().hash(_fileUrls));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        postedBy,
+        doneBy,
+        price,
+        title,
+        deadline,
+        dateCreated,
+        task,
+        subject,
+        words,
+        currentLanguage,
+        finalLanguage,
+        description,
+        service,
+        isComplete,
+        writerName,
+        projectManagerName,
+        const DeepCollectionEquality().hash(_fileUrls),
+        const DeepCollectionEquality().hash(_finalFileUrls)
+      ]);
 
-  /// Create a copy of TranslationProjectDataEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TranslationProjectDataEntityImplCopyWith<
@@ -503,7 +520,8 @@ abstract class _TranslationProjectDataEntity
           required final bool isComplete,
           required final String writerName,
           required final String projectManagerName,
-          required final List<String> fileUrls}) =
+          required final List<String> fileUrls,
+          required final List<String> finalFileUrls}) =
       _$TranslationProjectDataEntityImpl;
 
   factory _TranslationProjectDataEntity.fromJson(Map<String, dynamic> json) =
@@ -545,11 +563,10 @@ abstract class _TranslationProjectDataEntity
   String get projectManagerName;
   @override
   List<String> get fileUrls;
-
-  /// Create a copy of TranslationProjectDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<String> get finalFileUrls;
+  @override
+  @JsonKey(ignore: true)
   _$$TranslationProjectDataEntityImplCopyWith<
           _$TranslationProjectDataEntityImpl>
       get copyWith => throw _privateConstructorUsedError;

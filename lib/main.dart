@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         const GetMaterialApp(
           onGenerateRoute: Routes.generatedPageRoutes,
           debugShowCheckedModeBanner: false,
-          initialRoute: home,
+          initialRoute: signin,
           home: SignInSection(),
         ),
         defaultScale: true,

@@ -22,6 +22,7 @@ class NewProjectController extends GetxController {
   Rx<String> description = Rx<String>("");
   Rx<String> service = Rx<String>("");
   RxList<String> fileUrls = RxList<String>();
+  RxList<String> finalFileUrls = RxList<String>();
 
   TranslationProjectDataEntity order() => TranslationProjectDataEntity(
         id: projectId.value,
@@ -49,6 +50,7 @@ class NewProjectController extends GetxController {
         projectManagerName:
             authenticationController.loggedInUser.value!.fullName,
         fileUrls: fileUrls.value,
+        finalFileUrls: [],
       );
 
   Future<void> uploadFiles() async {
@@ -71,6 +73,32 @@ class NewProjectController extends GetxController {
 
       List<String> urls = await Future.wait(uploadTasks);
       fileUrls.addAll(urls);
+    } else {
+      // User canceled the picker
+      print('No files selected');
+    }
+  }
+
+  Future<void> uploadFinalFiles() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: FileType.custom,
+      allowedExtensions: ['pdf', 'docx'],
+    );
+
+    if (result != null) {
+      List<Future<String>> uploadTasks = result.files.map((file) async {
+        String fileName = Uuid().v4() + '.' + file.extension!;
+        UploadTask uploadTask = FirebaseStorage.instance
+            .ref('uploads/$fileName')
+            .putData(file.bytes!);
+
+        TaskSnapshot snapshot = await uploadTask;
+        return await snapshot.ref.getDownloadURL();
+      }).toList();
+
+      List<String> urls = await Future.wait(uploadTasks);
+      finalFileUrls.addAll(urls);
     } else {
       // User canceled the picker
       print('No files selected');

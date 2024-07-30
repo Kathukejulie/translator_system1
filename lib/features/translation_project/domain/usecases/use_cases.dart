@@ -11,13 +11,23 @@ class CreateTranslationProjectUseCase {
   }
 }
 
+class StreamAllTranslationProjectsUseCase {
+  final TranslationProjectsRepository _repository;
+
+  StreamAllTranslationProjectsUseCase(this._repository);
+
+  Stream<List<Map<String, dynamic>>> call() {
+    return _repository.streamAll();
+  }
+}
+
 class GetAllTranslationProjectsUseCase {
   final TranslationProjectsRepository _repository;
 
   GetAllTranslationProjectsUseCase(this._repository);
 
-  Stream<List<Map<String, dynamic>>> call() {
-    return _repository.streamAll();
+  Future<List<Map<String, dynamic>>> call() {
+    return _repository.getAll();
   }
 }
 

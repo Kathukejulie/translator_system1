@@ -28,6 +28,8 @@ class TranslationProjectsRepository {
 
   Stream<List<Map<String, dynamic>>> streamAll() => _database.streamAllData();
 
+  Future<List<Map<String, dynamic>>> getAll() => _database.getAllData();
+
   // Read operation - Get Project by ID
 
   Future<TranslationProjectDataEntity> getById({required String id}) async {

@@ -32,12 +32,8 @@ mixin _$ContractDataEntity {
   DateTime get dateCreated => throw _privateConstructorUsedError;
   DateTime get deadlineDate => throw _privateConstructorUsedError;
 
-  /// Serializes this ContractDataEntity to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ContractDataEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ContractDataEntityCopyWith<ContractDataEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,8 +68,6 @@ class _$ContractDataEntityCopyWithImpl<$Res, $Val extends ContractDataEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ContractDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,8 +162,6 @@ class __$$ContractDataEntityImplCopyWithImpl<$Res>
       $Res Function(_$ContractDataEntityImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ContractDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -307,7 +299,7 @@ class _$ContractDataEntityImpl implements _ContractDataEntity {
                 other.deadlineDate == deadlineDate));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -323,9 +315,7 @@ class _$ContractDataEntityImpl implements _ContractDataEntity {
       dateCreated,
       deadlineDate);
 
-  /// Create a copy of ContractDataEntity
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ContractDataEntityImplCopyWith<_$ContractDataEntityImpl> get copyWith =>
@@ -379,11 +369,8 @@ abstract class _ContractDataEntity implements ContractDataEntity {
   DateTime get dateCreated;
   @override
   DateTime get deadlineDate;
-
-  /// Create a copy of ContractDataEntity
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ContractDataEntityImplCopyWith<_$ContractDataEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

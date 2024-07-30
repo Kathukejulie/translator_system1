@@ -24,6 +24,7 @@ class TranslationProjectDataEntity with _$TranslationProjectDataEntity {
     required String writerName,
     required String projectManagerName,
     required List<String> fileUrls,
+    required List<String> finalFileUrls,
   }) = _TranslationProjectDataEntity;
 
   factory TranslationProjectDataEntity.fromJson(Map<String, dynamic> json) => _$TranslationProjectDataEntityFromJson(json);

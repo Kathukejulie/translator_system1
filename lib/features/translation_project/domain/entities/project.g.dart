@@ -28,6 +28,9 @@ _$TranslationProjectDataEntityImpl _$$TranslationProjectDataEntityImplFromJson(
       projectManagerName: json['projectManagerName'] as String,
       fileUrls:
           (json['fileUrls'] as List<dynamic>).map((e) => e as String).toList(),
+      finalFileUrls: (json['finalFileUrls'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$TranslationProjectDataEntityImplToJson(
@@ -51,4 +54,5 @@ Map<String, dynamic> _$$TranslationProjectDataEntityImplToJson(
       'writerName': instance.writerName,
       'projectManagerName': instance.projectManagerName,
       'fileUrls': instance.fileUrls,
+      'finalFileUrls': instance.finalFileUrls,
     };

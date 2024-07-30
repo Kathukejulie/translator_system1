@@ -161,7 +161,6 @@ Widget projectTableTitleRow() {
           tableCell("Title", isHeader: true),
           tableCell("Translator", isHeader: true),
           tableCell("Price", isHeader: true),
-          tableCell("ID", isHeader: true),
           tableCell("Word count", isHeader: true),
           tableCell("Action", isHeader: true),
         ],
@@ -185,7 +184,6 @@ TableRow projectTableRow(
       tableCell(order.title),
       tableCell(order.writerName),
       tableCell(order.price.toString()),
-      tableCell(Random().nextInt(9999999).toString()),
       tableCell('${order.words} words'),
       GestureDetector(
           onTap: () => Navigator.pushNamed(context, mainprojectDetails,

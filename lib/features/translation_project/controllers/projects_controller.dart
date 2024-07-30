@@ -5,6 +5,7 @@ import 'package:translator_app/features/translation_project/domain/usecases/use_
 class TranslationProjectsController {
   final CreateTranslationProjectUseCase _createTranslationProjectUseCase;
   final GetAllTranslationProjectsUseCase _getAllTranslationProjectUseCase;
+  final StreamAllTranslationProjectsUseCase _streamAllTranslationProjectUseCase;
   final GetProjectByIdUseCase _getByIdTranslationProjectUseCase;
   final UpdateTranslationProjectUseCase _updateTranslationProjectUseCase;
   final DeleteTranslationProjectUseCase _deleteTranslationProjectUseCase;
@@ -14,6 +15,8 @@ class TranslationProjectsController {
   TranslationProjectsController({
     required CreateTranslationProjectUseCase createTranslationProjectUseCase,
     required GetAllTranslationProjectsUseCase getAllTranslationProjectUseCase,
+    required StreamAllTranslationProjectsUseCase
+        streamAllTranslationProjectUseCase,
     required GetProjectByIdUseCase getByIdTranslationProjectUseCase,
     required UpdateTranslationProjectUseCase updateTranslationProjectUseCase,
     required DeleteTranslationProjectUseCase deleteTranslationProjectUseCase,
@@ -21,6 +24,8 @@ class TranslationProjectsController {
         changeTranslationProjectStatusUseCase,
   })  : _createTranslationProjectUseCase = createTranslationProjectUseCase,
         _getAllTranslationProjectUseCase = getAllTranslationProjectUseCase,
+        _streamAllTranslationProjectUseCase =
+            streamAllTranslationProjectUseCase,
         _getByIdTranslationProjectUseCase = getByIdTranslationProjectUseCase,
         _updateTranslationProjectUseCase = updateTranslationProjectUseCase,
         _deleteTranslationProjectUseCase = deleteTranslationProjectUseCase,
@@ -38,6 +43,10 @@ class TranslationProjectsController {
 
   // @override
   Stream<List<Map<String, dynamic>>> streamAll() =>
+      _streamAllTranslationProjectUseCase.call();
+
+  // @override
+  Future<List<Map<String, dynamic>>> getAll() =>
       _getAllTranslationProjectUseCase.call();
 
   // @override

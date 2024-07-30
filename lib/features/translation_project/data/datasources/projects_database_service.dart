@@ -16,6 +16,14 @@ class TranslationProjectsDatabaseService {
       await FirebaseFirestore.instance.collection(_collection).doc(id).get();
 
   // Read all documents
+ // Read all documents as a Future
+  Future<List<Map<String, dynamic>>> getAllData() async {
+    final snapshot = await FirebaseFirestore.instance
+        .collection(_collection)
+        .get();
+
+    return snapshot.docs.map((doc) => doc.data()).toList();
+  }
 
   Stream<List<Map<String, dynamic>>> streamAllData() =>
       FirebaseFirestore.instance

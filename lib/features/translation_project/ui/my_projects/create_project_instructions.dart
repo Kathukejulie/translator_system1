@@ -11,6 +11,8 @@ import 'package:translator_app/routes.dart';
 import 'package:translator_app/widgets/main.dart';
 import 'package:uuid/uuid.dart';
 
+import 'upload_files_button.dart';
+
 class CreateProjectInstructions extends StatefulWidget {
   const CreateProjectInstructions({super.key});
 
@@ -338,37 +340,6 @@ class _CreateProjectInstructionsState extends State<CreateProjectInstructions> {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class UploadFilesButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      decoration: BoxDecoration(
-        color: mySecondaryColor,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Container(
-        margin: const EdgeInsets.only(left: 5, right: 10, top: 5, bottom: 10),
-        child: Center(
-          child: TextButton.icon(
-            onPressed: () async {
-              await newProjectController.uploadFiles();
-            },
-            icon: Icon(
-              Icons.folder_copy_outlined,
-              color: textColor,
-            ),
-            label: Text(
-              "Upload files",
-              style: TextStyle(color: textColor, fontSize: 12),
-            ),
-          ),
         ),
       ),
     );

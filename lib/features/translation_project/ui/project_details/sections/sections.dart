@@ -6,8 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:translator_app/features/translation_project/domain/entities/project.dart';
+import 'package:translator_app/features/translation_project/ui/my_projects/create_project_instructions.dart';
 import 'package:translator_app/routes.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../my_projects/upload_files_button.dart';
 
 class ProjectBidSection extends StatefulWidget {
   final TranslationProjectDataEntity project;
@@ -403,7 +406,7 @@ Widget projectSummaryCard(BuildContext context,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Attached files: ${project.fileUrls.length}",
+                  "Source files: ${project.fileUrls.length}",
                   style: TextStyle(
                     fontSize: 11,
                     color: inactiveLinkTextColor,
@@ -420,7 +423,6 @@ Widget projectSummaryCard(BuildContext context,
             ),
           ),
         ),
-        Divider(color: dividerColor),
         ListView.builder(
           shrinkWrap:
               true, // Important to make ListView.builder work inside a Column
@@ -444,6 +446,69 @@ Widget projectSummaryCard(BuildContext context,
                 onPressed: () async {
                   // Handle file download
                   final url = project.fileUrls[index];
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    throw 'Could not launch $url';
+                  }
+                },
+              ),
+            );
+          },
+        ),
+        Divider(color: dividerColor),
+        const SizedBox(height: 8.0),
+        UploadFinalFilesButton(project: project,),
+        const SizedBox(height: 8.0),
+        Divider(color: dividerColor),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            padding: const EdgeInsets.only(top: 3.0, bottom: 3.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Uploaded files: ${project.finalFileUrls.length}",
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: inactiveLinkTextColor,
+                  ),
+                ),
+                // const Text(
+                //   "View files",
+                //   style: TextStyle(
+                //     fontSize: 11,
+                //     color: Colors.blue,
+                //   ),
+                // ),
+              ],
+            ),
+          ),
+        ),
+        ListView.builder(
+          shrinkWrap:
+              true, // Important to make ListView.builder work inside a Column
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: project.finalFileUrls.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(
+                'File ${index + 1}',
+                style: TextStyle(
+                  fontSize: 11,
+                  color: inactiveLinkTextColor,
+                ),
+              ),
+              // subtitle: Text(project.fileUrls[index]),
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.download,
+                  color: Colors.blue,
+                ),
+                onPressed: () async {
+                  // Handle file download
+                  final url = project.finalFileUrls[index];
                   if (await canLaunch(url)) {
                     await launch(url);
                   } else {

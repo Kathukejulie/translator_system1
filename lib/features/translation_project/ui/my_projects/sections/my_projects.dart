@@ -5,6 +5,9 @@ import 'package:translator_app/constants/const.dart';
 import 'package:translator_app/features/translation_project/domain/entities/project.dart';
 import 'package:translator_app/widgets/main.dart';
 import 'package:translator_app/features/users_system/extensions/main.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:pdf/pdf.dart';
+import 'package:printing/printing.dart';
 
 class MyProjectsSection extends StatelessWidget {
   final bool status;
@@ -64,10 +67,12 @@ class MyProjectsSection extends StatelessWidget {
                       Table(
                           children: projects
                               .whereBelongsToUser()
-                              .where((element) => element['isComplete'] == status)
+                              .where(
+                                  (element) => element['isComplete'] == status)
                               .map((e) => projectTableRow(
                                   context: context,
-                                  order: TranslationProjectDataEntity.fromJson(e)))
+                                  order:
+                                      TranslationProjectDataEntity.fromJson(e)))
                               .toList()),
                     ],
                   );
@@ -79,6 +84,53 @@ class MyProjectsSection extends StatelessWidget {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final projects = await projectsController
+              .getAll(); // Ensure your controller has this method
+
+          // Determine which method to use
+          List<Map<String, dynamic>> filteredProjects;
+          if (authenticationController.loggedInUser.value!.isWriter) {
+            filteredProjects = projects.whereAssignedToUser().toList();
+          } else {
+            filteredProjects = projects.whereBelongsToUser().toList();
+          }
+          final projectEntities = filteredProjects
+              .map((e) => TranslationProjectDataEntity.fromJson(e))
+              .toList();
+          await _generatePdf(projectEntities);
+        },
+        child: Icon(Icons.print),
+        backgroundColor: Colors.blue,
+      ),
+    );
+  }
+
+  // Generate PDF
+  Future<void> _generatePdf(List<TranslationProjectDataEntity> projects) async {
+    final pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) {
+          return pw.Table.fromTextArray(
+            headers: ['Title', 'Translator', 'Price', 'Word Count'],
+            data: projects.map((project) {
+              return [
+                project.title,
+                project.writerName,
+                project.price.toString(),
+                project.words.toString(),
+              ];
+            }).toList(),
+          );
+        },
+      ),
+    );
+
+    await Printing.layoutPdf(
+      onLayout: (PdfPageFormat format) async => pdf.save(),
     );
   }
 }

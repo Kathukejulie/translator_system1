@@ -39,14 +39,15 @@ class _SignUpSectionState extends State<SignUpSection> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Text(
-                      //   'Translator App',
-                      //   style: TextStyle(
-                      //       color: textColor,
-                      //       fontSize: 25,
-                      //       fontWeight: FontWeight.bold),
-                      // ),
-                      // const SizedBox(height: 25.0),
+                      Text(
+                        'Localisation Project Tracker',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: textColor,
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 40.0),
                       TextField(
                         style: TextStyle(
                           color: textColor,
