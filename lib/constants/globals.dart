@@ -8,7 +8,7 @@ import 'package:translator_app/features/users_system/controllers/users_controlle
 import 'package:translator_app/features/users_system/di/users_system_injector.dart';
 import 'package:translator_app/features/contracts/controllers/new_contract_controller.dart';
 import 'package:translator_app/features/translation_project/controllers/new_project_controller.dart';
-import 'package:translator_app/features/users_system/controllers/new_user_controller.dart';
+import 'package:translator_app/features/users_system/controllers/authentication_controller.dart';
 import 'package:translator_app/features/users_system/controllers/selected_user_controller.dart';
 import 'package:get_it/get_it.dart';
 

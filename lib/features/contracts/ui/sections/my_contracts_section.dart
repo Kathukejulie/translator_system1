@@ -52,6 +52,33 @@ class _MyContractsSectionState extends State<MyContractsSection>
                       children: [
                         Row(
                           children: [
+                            const Text(
+                              "Invoice Number:",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.blueAccent,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 30,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                authenticationController
+                                    .loggedInUser.value!.invoiceNumber,
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.blueAccent,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
                             Text(
                               authenticationController
                                           .loggedInUser.value!.isWriter ==
@@ -59,7 +86,7 @@ class _MyContractsSectionState extends State<MyContractsSection>
                                   ? "Current Earnings:"
                                   : "Account Statements Total:",
                               style: const TextStyle(
-                                fontSize: 25,
+                                fontSize: 16,
                                 color: Colors.blueAccent,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -72,7 +99,7 @@ class _MyContractsSectionState extends State<MyContractsSection>
                               child: Text(
                                 "${contracts.where((element) => (authenticationController.loggedInUser.value!.isWriter == true ? element['writerId'] : element['managerId']) == firebaseAuth.currentUser!.uid).fold(0.0, (previousValue, element) => previousValue + double.parse(element['amount'])).toStringAsFixed(2)} Kshs",
                                 style: const TextStyle(
-                                  fontSize: 25,
+                                  fontSize: 16,
                                   color: Colors.blueAccent,
                                   fontWeight: FontWeight.bold,
                                 ),
