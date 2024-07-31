@@ -35,6 +35,7 @@ class _CreateNewProjectPageThreeState extends State<CreateNewProjectPageThree> {
               projectsController.create(newProjectController.order()).then(
                   (value) => Navigator.of(context).pushReplacementNamed(home));
               contractsController.create(newContractController.order());
+              newProjectController.fileUrls.clear();
             },
             child: const Text('Complete'),
           ),
@@ -118,7 +119,7 @@ class _CreateNewProjectPageThreeState extends State<CreateNewProjectPageThree> {
                             Padding(
                               padding: const EdgeInsets.only(top: 4.0),
                               child: customText(
-                                text: "20+ Completed orders",
+                                text: e.expertiseLanguage,
                                 font: 12,
                                 weight: FontWeight.w400,
                                 textColor: alttextColor,

@@ -48,7 +48,7 @@ class _SignInSectionState extends State<SignInSection> {
                       const SizedBox(height: 40.0),
                       Container(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                            const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(30),
@@ -75,8 +75,8 @@ class _SignInSectionState extends State<SignInSection> {
                         ),
                         decoration: InputDecoration(
                           labelText: '$_role Email',
-                          labelStyle: TextStyle(color: Colors.grey),
-                          enabledBorder: UnderlineInputBorder(
+                          labelStyle: const TextStyle(color: Colors.grey),
+                          enabledBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.grey),
                           ),
                         ),
@@ -174,7 +174,7 @@ class _SignInSectionState extends State<SignInSection> {
         });
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         decoration: BoxDecoration(
           color: isSelected ? mySecondaryColor : Colors.transparent,
           borderRadius: BorderRadius.circular(20),

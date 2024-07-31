@@ -99,6 +99,23 @@ class _SignUpSectionState extends State<SignUpSection> {
                         },
                       ),
                       const SizedBox(height: 16.0),
+                      TextField(
+                        style: TextStyle(
+                          color: textColor,
+                          fontSize: 14,
+                        ),
+                        decoration: const InputDecoration(
+                          labelText: 'Invoice Number',
+                          labelStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          authenticationController.invoiceNumber.value = value;
+                        },
+                      ),
+                      const SizedBox(height: 16.0),
                       DropdownButtonFormField<String>(
                         dropdownColor: myThirdColor,
                         style: const TextStyle(
@@ -107,7 +124,9 @@ class _SignUpSectionState extends State<SignUpSection> {
                           color: Colors.grey,
                         ),
                         value: _language,
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                            authenticationController.expertiseLanguage.value = value!;
+                        },
                         items: const [
                           DropdownMenuItem(
                             value: 'Choose Expertise Language',

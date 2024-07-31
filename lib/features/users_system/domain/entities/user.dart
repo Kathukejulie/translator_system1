@@ -12,6 +12,8 @@ class UserDataEntity with _$UserDataEntity {
     required String about,
     required String phoneNumber,
     required bool isWriter,
+    required String invoiceNumber,
+    required String expertiseLanguage,
   }) = _UserDataEntity;
 
   factory UserDataEntity.fromJson(Map<String, dynamic> json) => _$UserDataEntityFromJson(json);

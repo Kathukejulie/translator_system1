@@ -14,6 +14,8 @@ _$UserDataEntityImpl _$$UserDataEntityImplFromJson(Map<String, dynamic> json) =>
       about: json['about'] as String,
       phoneNumber: json['phoneNumber'] as String,
       isWriter: json['isWriter'] as bool,
+      invoiceNumber: json['invoiceNumber'] as String,
+      expertiseLanguage: json['expertiseLanguage'] as String,
     );
 
 Map<String, dynamic> _$$UserDataEntityImplToJson(
@@ -25,4 +27,6 @@ Map<String, dynamic> _$$UserDataEntityImplToJson(
       'about': instance.about,
       'phoneNumber': instance.phoneNumber,
       'isWriter': instance.isWriter,
+      'invoiceNumber': instance.invoiceNumber,
+      'expertiseLanguage': instance.expertiseLanguage,
     };

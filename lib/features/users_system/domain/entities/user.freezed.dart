@@ -26,6 +26,8 @@ mixin _$UserDataEntity {
   String get about => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   bool get isWriter => throw _privateConstructorUsedError;
+  String get invoiceNumber => throw _privateConstructorUsedError;
+  String get expertiseLanguage => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,9 @@ abstract class $UserDataEntityCopyWith<$Res> {
       String fullName,
       String about,
       String phoneNumber,
-      bool isWriter});
+      bool isWriter,
+      String invoiceNumber,
+      String expertiseLanguage});
 }
 
 /// @nodoc
@@ -67,6 +71,8 @@ class _$UserDataEntityCopyWithImpl<$Res, $Val extends UserDataEntity>
     Object? about = null,
     Object? phoneNumber = null,
     Object? isWriter = null,
+    Object? invoiceNumber = null,
+    Object? expertiseLanguage = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -93,6 +99,14 @@ class _$UserDataEntityCopyWithImpl<$Res, $Val extends UserDataEntity>
           ? _value.isWriter
           : isWriter // ignore: cast_nullable_to_non_nullable
               as bool,
+      invoiceNumber: null == invoiceNumber
+          ? _value.invoiceNumber
+          : invoiceNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      expertiseLanguage: null == expertiseLanguage
+          ? _value.expertiseLanguage
+          : expertiseLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +125,9 @@ abstract class _$$UserDataEntityImplCopyWith<$Res>
       String fullName,
       String about,
       String phoneNumber,
-      bool isWriter});
+      bool isWriter,
+      String invoiceNumber,
+      String expertiseLanguage});
 }
 
 /// @nodoc
@@ -131,6 +147,8 @@ class __$$UserDataEntityImplCopyWithImpl<$Res>
     Object? about = null,
     Object? phoneNumber = null,
     Object? isWriter = null,
+    Object? invoiceNumber = null,
+    Object? expertiseLanguage = null,
   }) {
     return _then(_$UserDataEntityImpl(
       id: null == id
@@ -157,6 +175,14 @@ class __$$UserDataEntityImplCopyWithImpl<$Res>
           ? _value.isWriter
           : isWriter // ignore: cast_nullable_to_non_nullable
               as bool,
+      invoiceNumber: null == invoiceNumber
+          ? _value.invoiceNumber
+          : invoiceNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+      expertiseLanguage: null == expertiseLanguage
+          ? _value.expertiseLanguage
+          : expertiseLanguage // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +196,9 @@ class _$UserDataEntityImpl implements _UserDataEntity {
       required this.fullName,
       required this.about,
       required this.phoneNumber,
-      required this.isWriter});
+      required this.isWriter,
+      required this.invoiceNumber,
+      required this.expertiseLanguage});
 
   factory _$UserDataEntityImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDataEntityImplFromJson(json);
@@ -187,10 +215,14 @@ class _$UserDataEntityImpl implements _UserDataEntity {
   final String phoneNumber;
   @override
   final bool isWriter;
+  @override
+  final String invoiceNumber;
+  @override
+  final String expertiseLanguage;
 
   @override
   String toString() {
-    return 'UserDataEntity(id: $id, email: $email, fullName: $fullName, about: $about, phoneNumber: $phoneNumber, isWriter: $isWriter)';
+    return 'UserDataEntity(id: $id, email: $email, fullName: $fullName, about: $about, phoneNumber: $phoneNumber, isWriter: $isWriter, invoiceNumber: $invoiceNumber, expertiseLanguage: $expertiseLanguage)';
   }
 
   @override
@@ -206,13 +238,17 @@ class _$UserDataEntityImpl implements _UserDataEntity {
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.isWriter, isWriter) ||
-                other.isWriter == isWriter));
+                other.isWriter == isWriter) &&
+            (identical(other.invoiceNumber, invoiceNumber) ||
+                other.invoiceNumber == invoiceNumber) &&
+            (identical(other.expertiseLanguage, expertiseLanguage) ||
+                other.expertiseLanguage == expertiseLanguage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, email, fullName, about, phoneNumber, isWriter);
+  int get hashCode => Object.hash(runtimeType, id, email, fullName, about,
+      phoneNumber, isWriter, invoiceNumber, expertiseLanguage);
 
   @JsonKey(ignore: true)
   @override
@@ -236,7 +272,9 @@ abstract class _UserDataEntity implements UserDataEntity {
       required final String fullName,
       required final String about,
       required final String phoneNumber,
-      required final bool isWriter}) = _$UserDataEntityImpl;
+      required final bool isWriter,
+      required final String invoiceNumber,
+      required final String expertiseLanguage}) = _$UserDataEntityImpl;
 
   factory _UserDataEntity.fromJson(Map<String, dynamic> json) =
       _$UserDataEntityImpl.fromJson;
@@ -253,6 +291,10 @@ abstract class _UserDataEntity implements UserDataEntity {
   String get phoneNumber;
   @override
   bool get isWriter;
+  @override
+  String get invoiceNumber;
+  @override
+  String get expertiseLanguage;
   @override
   @JsonKey(ignore: true)
   _$$UserDataEntityImplCopyWith<_$UserDataEntityImpl> get copyWith =>

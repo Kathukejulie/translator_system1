@@ -17,6 +17,8 @@ class AuthenticationController extends GetxController {
   Rx<bool> isWriter = Rx<bool>(false);
   final Rx<bool> _userIsNull = Rx<bool>(false);
   final Rx<String> _message = Rx<String>("");
+  final Rx<String> invoiceNumber = Rx<String>("");
+  final Rx<String> expertiseLanguage = Rx<String>("");
   final loggedInUser = Rx<UserDataEntity?>(null);
   Rx<bool> isLoggedIn = Rx<bool>(false);
 
@@ -110,7 +112,8 @@ class AuthenticationController extends GetxController {
               email: email.value,
               about: about.value,
               fullName: fullName.value,
-              isWriter: isWriter.value,
+              isWriter: isWriter.value, invoiceNumber: invoiceNumber.value, expertiseLanguage: '',
+              
             );
             usersController
                 .create(user)

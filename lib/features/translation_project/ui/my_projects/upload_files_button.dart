@@ -61,6 +61,7 @@ class UploadFinalFilesButton extends StatelessWidget {
               projectsController.updatedata(newProject).then((value) =>
                   Navigator.of(context)
                       .pushReplacementNamed(myProjects, arguments: false));
+              newProjectController.finalFileUrls.clear();
             },
             icon: Icon(
               Icons.folder_copy_outlined,
